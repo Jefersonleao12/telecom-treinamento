@@ -9,7 +9,7 @@ import streamlit as st
 from supabase import create_client, Client
 
 
-@st.cache_resource
+@st.cache_resource(show_spinner=False)
 def get_supabase_client() -> Client:
     """Cria (uma única vez) a conexão com o Supabase, usando as chaves
     guardadas em .streamlit/secrets.toml (ou nos 'Secrets' do Streamlit Cloud)."""
@@ -224,3 +224,5 @@ def criar_certificado(usuario_id: str, curso_id: str, codigo_validacao: str):
     }
     resposta = supabase.table("certificados").insert(novo).execute()
     return resposta.data[0] if resposta.data else None
+    
+    Corrige erro de set_page_config
