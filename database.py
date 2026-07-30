@@ -224,5 +224,3 @@ def criar_certificado(usuario_id: str, curso_id: str, codigo_validacao: str):
     }
     resposta = supabase.table("certificados").insert(novo).execute()
     return resposta.data[0] if resposta.data else None
-    
-    Corrige erro de set_page_config
